@@ -1,0 +1,21 @@
+{
+  "name"        : "angel plan",  // 應用名稱
+  "script"      : "start.js",  // 實際啟動指令碼
+  "cwd"         : "./",  // 當前工作路徑
+  "watch": [  // 監控變化的目錄，一旦變化，自動重啟
+    "src"
+  ],
+  "ignore_watch" : [  // 從監控目錄中排除
+    "node_modules", 
+    "logs",
+    "./src/public"
+  ],
+  "watch_options": {
+    "followSymlinks": false
+  },
+  "error_file" : "./logs/app-err.log",  // 錯誤日誌路徑
+  "out_file"   : "./logs/app-out.log",  // 普通日誌路徑
+  "env": {
+      "NODE_ENV": "production"  // 環境引數，當前指定為生產環境
+  }
+}
