@@ -17,6 +17,19 @@ class Notification {
         }
     }
 
+    async create(ctx) {
+        try {
+            const data = ctx.query;
+            const sql = `INSERT INTO web_notification (username, groupid, mission_id, noti_time, motion, status) VALUES ('${data.username}', ${data.groupid}, ${data.mission_id}, '${data.noti_time}', '${data.motion}', 0)`;
+            const connection = await mysql.createConnection(config);
+            const [result] = await connection.query(sql);
+            connection.close();
+            return result;
+        } catch (e) {
+            return false;
+        }
+    }
+
 }
 
 export default new Notification();

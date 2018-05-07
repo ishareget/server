@@ -29,12 +29,12 @@ app
     .use(views(path.join(__dirname, '/view/'), {
         extension: 'html'
     }))
-    .use(jwt({
-        secret: process.env.JWT_SECRET,
-        // passthrough: true
-    }).unless({
-        path: ['/', /^\/api\/mission\/signature\.*/, /^\/activity/, /^\/qrcode/, /^\/dashboard/, '/api/carousel', '/api/user/login', '/api', '/api/mission', '/api/mission/type', /^\/api\/mission\/id\/.*/, /^\/api\/upload\/.*/]
-    }))
+    // .use(jwt({
+    //     secret: process.env.JWT_SECRET,
+    //     // passthrough: true
+    // }).unless({
+    //     path: ['/', /^\/api\/mission\/signature\.*/, /^\/activity/, /^\/qrcode/, /^\/dashboard/, '/api/carousel', '/api/user/login', '/api', '/api/mission', '/api/mission/type', /^\/api\/mission\/id\/.*/, /^\/api\/upload\/.*/]
+    // }))
     .use(routes())
 
 app.listen(

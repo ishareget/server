@@ -109,7 +109,8 @@ router.get('/', async (ctx, next) => {
                 '/upload/profile      使用者大頭貼上傳'
             ],
             notification: [
-                '/notification/username/:username 抓取該使用者的通知訊息'
+                '/notification/username/:username 抓取該使用者的通知訊息',
+                '/notification/create             增加通知'
             ]
         }
     }
