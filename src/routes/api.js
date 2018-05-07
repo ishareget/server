@@ -10,16 +10,17 @@ import volunteer from './api/volunteer';
 import upload from './api/upload';
 import user from './api/user';
 import group from './api/group';
+import notification from './api/notification';
 
 const router = new Router();
 
-router.post('/', async(ctx, next) => {
+router.post('/', async (ctx, next) => {
     ctx.body = {
         Message: 'Welcome to API'
     }
 })
 
-router.get('/', async(ctx, next) => {
+router.get('/', async (ctx, next) => {
 
     let cip = ctx.request.headers['x-forwarded-for'];
 
@@ -106,6 +107,9 @@ router.get('/', async(ctx, next) => {
                 '/upload/mission      任務圖片上傳',
                 '/upload/carousel     輪播圖上傳',
                 '/upload/profile      使用者大頭貼上傳'
+            ],
+            notification: [
+                '/notification/username/:username 抓取該使用者的通知訊息'
             ]
         }
     }
@@ -122,5 +126,6 @@ router.use('/volunteer', volunteer.routes(), volunteer.allowedMethods());
 router.use('/upload', upload.routes(), upload.allowedMethods());
 router.use('/user', user.routes(), user.allowedMethods());
 router.use('/group', group.routes(), group.allowedMethods());
+router.use('/notification', notification.routes(), notification.allowedMethods());
 
 export default router;
