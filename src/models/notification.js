@@ -19,7 +19,7 @@ class Notification {
 
     async create(ctx) {
         try {
-            const data = ctx.query;
+            const data = ctx.request.body;
             const sql = `INSERT INTO web_notification (username, groupid, mission_id, noti_time, motion, status) VALUES ('${data.username}', ${data.groupid}, ${data.mission_id}, '${data.noti_time}', '${data.motion}', 0)`;
             const connection = await mysql.createConnection(config);
             const [result] = await connection.query(sql);
