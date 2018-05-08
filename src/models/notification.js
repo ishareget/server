@@ -6,7 +6,7 @@ class Notification {
     async findByusername(ctx) {
         try {
             const connection = await mysql.createConnection(config);
-            const [row, field] = await connection.query('Select * from notification Where username = ? DESC noti_time', [ctx.query.username]);
+            const [row, field] = await connection.query('Select * from web_notification Where username = ? ORDER BY noti_time DESC', [ctx.request.body.username]);
             connection.close();
             if (row.length === 0) {
                 return false;
@@ -24,6 +24,16 @@ class Notification {
             const connection = await mysql.createConnection(config);
             const [result] = await connection.query(sql);
             connection.close();
+            return result;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    async update(ctx) {
+        try {
+            const connection = await mysql.createConnection(config);
+            const [result] = await connection.query(`UPDATE web_notification SET status = 1 Where id = ${ctx.request.body.id}`);
             return result;
         } catch (e) {
             return false;

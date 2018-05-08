@@ -8,6 +8,10 @@ class NotificationController {
     async create(ctx) {
         ctx.body = await Notification.create(ctx);
     }
+
+    async update(ctx) {
+        ctx.body = await Notification.update(ctx);
+    }
 }
 
 export default new NotificationController();
