@@ -33,7 +33,7 @@ app
         secret: process.env.JWT_SECRET,
         // passthrough: true
     }).unless({
-        path: ['/', '/api/notification/username', /^\/activity/, /^\/qrcode/, /^\/dashboard/, '/api/carousel', '/api/user/login', '/api', '/api/mission', '/api/mission/type', /^\/api\/mission\/id\/.*/, /^\/api\/upload\/.*/]
+        path: ['/', '/api/notification/username','/api/notification/update', /^\/activity/, /^\/qrcode/, /^\/dashboard/, '/api/carousel', '/api/user/login', '/api', '/api/mission', '/api/mission/type', /^\/api\/mission\/id\/.*/, /^\/api\/upload\/.*/]
     }))
     .use(routes())
 
