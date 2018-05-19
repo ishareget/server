@@ -6,8 +6,8 @@ const router = new Router();
 
 router.get('/', MissionControllers.find);
 router.get('/id/:uid', MissionControllers.findById);
-router.get('/group/:uid', roles, MissionControllers.findByGroup);
-router.get('/user/:uid', roles, MissionControllers.findByUser);
+router.get('/group/:uid', MissionControllers.findByGroup);
+router.get('/user/:uid', MissionControllers.findByUser);
 router.get('/type', MissionControllers.findType);
 router.get('/signature/:uid', MissionControllers.signature);
 router.post('/punchin', MissionControllers.punchin);
