@@ -14,6 +14,7 @@ import cors from 'kcors';
 import open from 'open';
 import routes from './routes';
 import path from 'path';
+import util from './util';
 
 const app = new Koa();
 
@@ -32,11 +33,8 @@ app
     .use(jwt({
         secret: process.env.JWT_SECRET,
         // passthrough: true
-    }).unless({
-        path: ['/', /^\/activity/, /^\/qrcode/, /^\/dashboard/, '/api/carousel', '/api/user/login', '/api', '/api/mission', /^\/api\/mission\/.*/, /^\/api\/upload\/.*/]
-    }))
+    }).unless(util))
     .use(routes())
-
 app.listen(
     process.env.PORT,
     () => {
