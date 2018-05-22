@@ -5,6 +5,10 @@ class NotificationController {
         ctx.body = await Notification.findByusername(ctx);
     }
 
+    async findById(ctx) {
+        ctx.body = await Notification.findById(ctx);
+    }
+
     async create(ctx) {
         ctx.body = await Notification.create(ctx);
     }
